@@ -22,9 +22,23 @@ model User {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
+  books Book[]
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+model Book {
+  id          Int      @id @default(autoincrement())
+  name       String
+  author      String
+  pageCount   Int
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@map("books")
 }

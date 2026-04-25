@@ -2,7 +2,10 @@ import bcrypt from "bcryptjs";
 import { z } from "zod";
 import prisma from "../config/prisma";
 import { ApiError } from "../utils/ApiError";
-import { createUserSchema, updateUserSchema } from "../validators/user.validator";
+import {
+  createUserSchema,
+  updateUserSchema,
+} from "../validators/user.validator";
 
 const safeUser = {
   id: true,
@@ -23,7 +26,7 @@ const getUserOrThrow = async (id: number) => {
 };
 
 export const userService = {
-  async getAllUsers() {
+  async getAll() {
     return prisma.user.findMany({
       select: safeUser,
       orderBy: {
@@ -32,7 +35,7 @@ export const userService = {
     });
   },
 
-  async getUserById(id: number) {
+  async getById(id: number) {
     const user = await prisma.user.findUnique({
       where: { id },
       select: safeUser,
@@ -42,7 +45,7 @@ export const userService = {
     return user;
   },
 
-  async createUser(data: CreateUserInput) {
+  async create(data: CreateUserInput) {
     const validatedData = createUserSchema.parse(data);
 
     const existingUser = await prisma.user.findUnique({
@@ -64,15 +67,13 @@ export const userService = {
     return user;
   },
 
-  async updateUser(
-    id: number,
-    data: UpdateUserInput,
-  ) {
+  async update(id: number, data: UpdateUserInput) {
     await getUserOrThrow(id);
     const validatedData = updateUserSchema.parse(data);
 
     const updateData: Record<string, unknown> = {};
-    if (validatedData.email !== undefined) updateData.email = validatedData.email;
+    if (validatedData.email !== undefined)
+      updateData.email = validatedData.email;
     if (validatedData.name !== undefined) updateData.name = validatedData.name;
     if (validatedData.role !== undefined) updateData.role = validatedData.role;
     if (validatedData.password !== undefined)
@@ -85,7 +86,7 @@ export const userService = {
     });
   },
 
-  async deleteUser(id: number, currentUserId: number) {
+  async delete(id: number, currentUserId: number) {
     await getUserOrThrow(id);
 
     if (currentUserId === id) {
