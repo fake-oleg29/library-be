@@ -8,16 +8,14 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: backend_app_db
     ports:
-      - '5433:5432'
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-      args:
-        DATABASE_URL: postgresql://postgres:postgres@postgres:5432/backend_app_db
+      dockerfile: Dockerfile.dev
     container_name: backend_app
     restart: unless-stopped
     depends_on:
@@ -27,9 +25,12 @@ services:
       JWT_SECRET: your-super-secret-jwt-key-change-in-production
       JWT_EXPIRES_IN: 7d
       PORT: 3000
-      NODE_ENV: production
+      NODE_ENV: development
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
 
 volumes:
   postgres_data:
