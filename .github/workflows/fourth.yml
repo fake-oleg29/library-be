@@ -1,0 +1,13 @@
+name: Fourth Workflow
+on:
+  workflow_run:
+    workflows: [Third Workflow, Second Workflow]
+    types:
+      - completed
+
+jobs:
+  run-fourth-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display fourth text
+        run: echo "Hello, world!"
