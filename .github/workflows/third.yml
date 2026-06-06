@@ -1,0 +1,14 @@
+name: Third Workflow
+on: [push]
+
+jobs:
+  run-third-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Display third text
+        run: |
+          pwd
+          ls -a
