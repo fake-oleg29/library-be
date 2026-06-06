@@ -3,8 +3,10 @@ on:
   push:
     branches:
       - main
+      - "feat/*"
     tags:
-      - v1.0.0
+      - v1.*
+      - "!1.2.1"
 
 jobs:
   run-sixth-job:
