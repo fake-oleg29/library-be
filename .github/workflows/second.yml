@@ -1,0 +1,20 @@
+name: Second Workflow
+on: [push]
+
+jobs:
+  run-second-job:
+    runs-on: windows-latest
+    steps:
+      - name: Display second text
+        run: echo "Hello, world!"
+  run-second-command-job:
+    runs-on: windows-latest
+    steps:
+      - name: Display second command text
+        run: echo "Hello, world!"
+  run-third-job:
+    runs-on: ubuntu-latest
+    needs: [run-second-job]
+    steps:
+      - name: Display third text
+        run: echo "Hello, world!"
