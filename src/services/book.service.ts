@@ -75,4 +75,7 @@ export const bookService = {
 
     await prisma.book.delete({ where: { id: bookId } });
   },
+  async getBooksByUserId(userId: number) {
+    return prisma.book.findMany({ where: { userId } });
+  },
 };
