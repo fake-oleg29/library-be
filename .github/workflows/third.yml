@@ -5,11 +5,14 @@ jobs:
   run-third-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
       - name: List files and cope repo
         run: ls -a
-      - uses: actions/checkout@v4
+      #   - uses: actions/checkout@v4
+      - name: Copy files
+        run: |
+          git init
+          git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git
+          git fetch origin
+          git checkout master
       - name: List files
         run: ls -a
