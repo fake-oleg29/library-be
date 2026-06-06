@@ -8,7 +8,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Display third text
-        run: |
-          pwd
-          ls -a
+      - name: List files and cope repo
+        run: ls -a
+      - uses: action/checkout@v4
+      - name: List files
+        run: ls -a
