@@ -5,5 +5,10 @@ jobs:
   run-first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Display some text # ← 8 пробілів перед "-"
-        run: echo "Hello, world!" # ← 10 пробілів перед "run"
+      - name: Display some text
+        run: echo "Hello, world!"
+      - name: Command in terminal
+        run: |
+          echo "Check node version"
+          node -v
+          npm -v
