@@ -10,6 +10,7 @@ app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
 app.use("/api", router);
+
 app.use(errorHandler);
 
 export default app;
