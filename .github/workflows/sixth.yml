@@ -1,0 +1,26 @@
+name: Sixth Workflow
+on:
+  push:
+    branches:
+      - main
+      - "feat/*"
+    tags:
+      - v1.*
+      - "!1.2.1"
+
+jobs:
+  run-sixth-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Events
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
+          echo $GITHUB_TAG
+          echo $GITHUB_BRANCH
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_REPOSITORY_OWNER
+          echo $GITHUB_REPOSITORY_URL
+          echo $GITHUB_REPOSITORY_NAME
+          echo $GITHUB_REPOSITORY_OWNER_URL
+          echo $GITHUB_REPOSITORY_OWNER_NAME
