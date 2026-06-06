@@ -9,18 +9,13 @@ on:
         default: "Hello world"
 
 jobs:
-  run-sixth-job:
+  run-seventh-job:
     runs-on: ubuntu-latest
     steps:
-      - name: schedule
+      - name: Print info
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
-          echo $GITHUB_TAG
-          echo $GITHUB_BRANCH
           echo $GITHUB_REPOSITORY
           echo $GITHUB_REPOSITORY_OWNER
-          echo $GITHUB_REPOSITORY_URL
-          echo $GITHUB_REPOSITORY_NAME
-          echo $GITHUB_REPOSITORY_OWNER_URL
-          echo $GITHUB_REPOSITORY_OWNER_NAME
+          echo ${{ github.event.inputs.titleCustom }}
