@@ -1,0 +1,26 @@
+name: Seventh Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      titleCustom:
+        description: Type the title
+        type: string
+        required: true
+        default: "Hello world"
+
+jobs:
+  run-sixth-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: schedule
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
+          echo $GITHUB_TAG
+          echo $GITHUB_BRANCH
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_REPOSITORY_OWNER
+          echo $GITHUB_REPOSITORY_URL
+          echo $GITHUB_REPOSITORY_NAME
+          echo $GITHUB_REPOSITORY_OWNER_URL
+          echo $GITHUB_REPOSITORY_OWNER_NAME
