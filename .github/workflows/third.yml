@@ -9,8 +9,7 @@ jobs:
         run: ls -a
       #   - uses: actions/checkout@v4
       - name: Copy files
-        run: |
-          git init
+        run: git init
           git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git
           git fetch origin
           git checkout master
