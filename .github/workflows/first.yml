@@ -1,0 +1,9 @@
+name: First Workflow
+on: [push]
+
+jobs:
+  run-first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display some text
+      - run: echo "Hello, world!"
