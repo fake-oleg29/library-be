@@ -1,18 +1,13 @@
 name: Sixth Workflow
 on:
-  push:
-    branches:
-      - main
-      - "feat/*"
-    tags:
-      - v1.*
-      - "!1.2.1"
+  schedule:
+    - cron: "*/2 * * * *"
 
 jobs:
   run-sixth-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Events
+      - name: schedule
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
