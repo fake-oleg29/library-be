@@ -1,12 +1,13 @@
-name: First Workflow
+name: First work
 on: [push]
 
 jobs:
   run-first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Command in terminal
-        run: |
-          echo "Check node version"
-          node -v
-          npm -v
+      - name: autor
+        run: echo ${{github.actor}}
+      - name: ref_name
+        run: echo ${{github.ref_name}}
+      - name: current date
+        run: date
