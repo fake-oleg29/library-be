@@ -4,7 +4,7 @@ on:
     paths:
       - "src/#"
     branches:
-      - main
+      - master
 
 jobs:
   run-first-job:
