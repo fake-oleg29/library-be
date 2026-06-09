@@ -1,10 +1,5 @@
 name: First work
-on:
-  push:
-    paths:
-      - "src/**"
-    branches:
-      - master
+on: [push]
 
 jobs:
   run-lint:
