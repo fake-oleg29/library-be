@@ -11,7 +11,7 @@ export const authenticate = (
 ): void => {
   try {
     const authHeader = req.headers.authorization;
-    console.log("authHeader: ", authHeader);
+
     if (!authHeader?.startsWith("Bearer ")) {
       throw ApiError.unauthorized("No token provided");
     }
