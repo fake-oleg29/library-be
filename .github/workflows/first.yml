@@ -1,16 +1,17 @@
 name: First work
 on: [push]
 
+env:
+  SSO_TYPE_VAR: SAML
+
 jobs:
   run-init:
     runs-on: ubuntu-latest
+    env:
+      TEST: 12
     steps:
-      - uses: actions/checkout@v4
-      - name: orest
-        if: github.actor == 'orest'
-        run: echo "It is orest"
-      - name: actor
-        if: github.actor == 'fake-oleg29'
+      - name: Event vars
         run: |
-          echo "It is fake-oleg29"
-          echo ${{github.env}}
+          echo $GITHUB_REF
+          echo ${{env.TEST}}
+          echo ${{env.SSO_TYPE_VAR}}
