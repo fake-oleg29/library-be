@@ -1,17 +1,11 @@
 name: First work
 on: [push]
 
-env:
-  SSO_TYPE_VAR: SAML
-
 jobs:
   run-init:
     runs-on: ubuntu-latest
-    env:
-      TEST: 12
     steps:
-      - name: Event vars
+      - name: SECRET & VAR
         run: |
-          echo $GITHUB_REF
-          echo ${{env.TEST}}
-          echo ${{env.SSO_TYPE_VAR}}
+          echo ${{vars.TEST}}
+          echo ${{secrets.JWR}}
