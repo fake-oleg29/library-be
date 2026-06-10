@@ -6,24 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: init
+      - name: orest
+        if: github.actor == 'orest'
+        run: echo "It is orest"
+      - name: actor
+        if: github.actor == 'fake-oleg29'
         run: |
-          npm i
-  run-lint:
-    runs-on: ubuntu-latest
-    needs: [run-init]
-    steps:
-      - name: lint
-        run: npm run lint
-  run-test:
-    runs-on: ubuntu-latest
-    needs: [run-lint]
-    steps:
-      - name: test
-        run: npm run test
-  run-build:
-    runs-on: ubuntu-latest
-    needs: [run-test]
-    steps:
-      - name: build
-        run: npm run build
+          echo "It is fake-oleg29"
+          echo ${{github.env}}
