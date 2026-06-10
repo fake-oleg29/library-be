@@ -2,11 +2,17 @@ name: First work
 on: [push]
 
 jobs:
-  run-init:
+  first:
     runs-on: ubuntu-latest
-    environment: "dev"
     steps:
-      - name: SECRET & VAR test
-        run: |
-          echo ${{vars.TEST}}
-          echo ${{secrets.JWR}}
+      - uses: actions/checkout@v4
+      - name: Cache
+        id: cache-step
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: "cache-file"
+      - name: Display cache
+        run: echo ${{steps.cache-step.outputs}}
+      - name: Istall
+        run: npm i
