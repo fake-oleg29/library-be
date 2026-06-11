@@ -8,4 +8,7 @@ jobs:
       - name: Math test
         run: expr 2+5 > result_expr.txt
       - name: Upload doc
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
+        with:
+          name: result_expr
+          path: result_expr.txt
