@@ -7,6 +7,12 @@ jobs:
       matrix:
         node-version: [12, 14, 18]
         some-text: ["test", "hhhh", "ggg"]
+        include:
+          - some-text: testNew
+            node-version: 22
+        exclude:
+          - some-text: hhhh
+            node-version: 12
       fail-fast: false
       max-parallel: 2
     runs-on: ubuntu-latest
