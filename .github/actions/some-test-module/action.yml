@@ -5,4 +5,4 @@ runs:
   steps:
     - name: some text
       run: echo some
-      shell: bash
+      shell: sh
