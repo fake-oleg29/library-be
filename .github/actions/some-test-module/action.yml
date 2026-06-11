@@ -1,0 +1,8 @@
+name: some-test-action
+description: "Some for nithing"
+runs:
+  using: "composite"
+  steps:
+    - name: some text
+      run: echo some
+      shell: bash

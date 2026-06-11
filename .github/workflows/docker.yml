@@ -13,3 +13,5 @@ jobs:
     steps:
       - name: node vertion
         run: node -v
+      - name: test custome action
+        uses: ./.github/actions/some-test-module
